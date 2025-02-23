@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Lux Travel Agency</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&family=Dancing+Script:wght@700&family=Great+Vibes&family=Montserrat:wght@400;700&family=Pacifico&family=Quicksand:wght@400;700&family=Lora:wght@400;700&family=Raleway:wght@400;700&family=Merriweather:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Raleway', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            background-color: rgba(0, 123, 255, 0.9);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .navbar.sticky {
+            background-color: rgba(0, 123, 255, 1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .nav-link {
+            color: white !important;
+            transition: color 0.3s;
+            font-family: 'Oswald', sans-serif;
+        }
+        .nav-link:hover {
+            color: #ffdd57 !important;
+        }
+        .btn-custom {
+            background-color: rgba(0, 123, 255, 0.9);
+            color: whitesmoke;
+            border: 2px solid transparent;
+            transition: background-color 0.3s, border-color 0.3s;
+            font-family: 'Oswald', sans-serif;
+        }
+        .btn-custom:hover {
+            background-color: #007bff;
+            border-color: white;
+            color: white;
+        }
+        .blog {
+            padding: 60px 0;
+            position: relative;
+        }
+        .blog::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('pexels-thinus-pretorius-170978742-26772001.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: -1;
+        }
+        .blog h2 {
+            color: rgba(0, 123, 255, 0.9);
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            font-weight: bold;
+            font-family: 'Playfair Display', serif;
+        }
+        .blog-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .blog-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .blog-card .card-body {
+            padding: 20px;
+        }
+        .blog-card h3 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-family: 'Merriweather', serif;
+        }
+        .blog-card p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            font-family: 'Quicksand', sans-serif;
+        }
+        .blog-card .btn-read-more {
+            background-color: rgba(0, 123, 255, 0.9);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-family: 'Oswald', sans-serif;
+        }
+        .blog-card .btn-read-more:hover {
+            background-color: #007bff;
+        }
+        .blog-card .meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            font-family: 'Quicksand', sans-serif;
+        }
+        .blog-card .meta i {
+            color: rgba(0, 123, 255, 0.9);
+            margin-right: 10px;
+        }
+        .footer {
+            background-color: rgba(0, 123, 255, 0.9);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer h4 {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .footer p {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: #ffdd57;
+        }
+        .social-links {
+            margin-top: 20px;
+        }
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #ffdd57;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <a class="navbar-brand" href="#">
+            <img src="log.png" alt="Travel Agency Logo" height="50">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="destination.html">Destinations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="packages.html">Packages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quote.html">Contact Us</a>
+                </li>
+            </ul>
+            <a class="btn btn-custom ml-3" href="#">Get a Quote</a>
+        </div>
+    </nav>
+
+    <section class="blog">
+        <div class="container">
+            <h2>Our Travel Blog</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <img src="destinations.jpeg" alt="Blog Post 1">
+                        <div class="card-body">
+                            <h3>Top 10 Destinations for 2024</h3>
+                            <div class="meta">
+                                <i class="fas fa-calendar-alt"></i>January 15, 2024
+                                <i class="fas fa-user"></i>John Doe
+                            </div>
+                            <p>Discover the top 10 must-visit destinations for 2024. From exotic beaches to bustling cities, we've got you covered.</p>
+                            <a href="blog-post-1.html" class="btn btn-read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <img src="first timers.jpeg" alt="Blog Post 2">
+                        <div class="card-body">
+                            <h3>Travel Tips for First-Timers</h3>
+                            <div class="meta">
+                                <i class="fas fa-calendar-alt"></i>February 1, 2024
+                                <i class="fas fa-user"></i>Jane Smith
+                            </div>
+                            <p>Traveling for the first time? Check out our essential tips to make your journey smooth and enjoyable.</p>
+                            <a href="blog-post-2.html" class="btn btn-read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <img src="gadgets.jpeg" alt="Blog Post 3">
+                        <div class="card-body">
+                            <h3>Best Travel Gadgets for 2024</h3>
+                            <div class="meta">
+                                <i class="fas fa-calendar-alt"></i>March 10, 2024
+                                <i class="fas fa-user"></i>Mike Johnson
+                            </div>
+                            <p>Explore the best travel gadgets that will make your trips more convenient and fun.</p>
+                            <a href="blog-post-3.html" class="btn btn-read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <img src="download.jpeg" alt="Blog Post 4">
+                        <div class="card-body">
+                            <h3>Exploring Hidden Gems</h3>
+                            <div class="meta">
+                                <i class="fas fa-calendar-alt"></i>April 5, 2024
+                                <i class="fas fa-user"></i>Sarah Lee
+                            </div>
+                            <p>Discover hidden gems around the world that are off the beaten path.</p>
+                            <a href="blog-post-4.html" class="btn btn-read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <img src="foodie.png" alt="Blog Post 5">
+                        <div class="card-body">
+                            <h3>Foodie Adventures Around the World</h3>
+                            <div class="meta">
+                                <i class="fas fa-calendar-alt"></i>May 20, 2024
+                                <i class="fas fa-user"></i>Emily Davis
+                            </div>
+                            <p>Embark on a culinary journey and explore the best food destinations around the globe.</p>
+                            <a href="blog-post-5.html" class="btn btn-read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-card">
+                        <img src="eco friendly.jpeg" alt="Blog Post 6">
+                        <div class="card-body">
+                            <h3>Eco-Friendly Travel Tips</h3>
+                            <div class="meta">
+                                <i class="fas fa-calendar-alt"></i>June 10, 2024
+                                <i class="fas fa-user"></i>Chris Green
+                            </div>
+                            <p>Learn how to travel sustainably and reduce your carbon footprint while exploring the world.</p>
+                            <a href="blog-post-6.html" class="btn btn-read-more">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <h4>Lux Travel Agency</h4>
+            <p>Explore the world with us. Your adventure starts here.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/zinduaschool/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/i/flow/login?redirect_after_login=%2FZinduaSchool" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://ke.linkedin.com/school/zinduaschool/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>Contact us: <a href="mailto:info@travelagency.com">info@luxtravelagency.com</a> | <a href="tel:+254712345678">+254 712 345 678</a></p>
+            <p>&copy; 2024 Lux Travel Agency. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

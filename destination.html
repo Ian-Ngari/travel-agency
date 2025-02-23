@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinations - Lux Travel Agency</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&family=Dancing+Script:wght@700&family=Great+Vibes&family=Montserrat:wght@400;700&family=Pacifico&family=Quicksand:wght@400;700&family=Lora:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Raleway', sans-serif; 
+            color: #333;
+        }
+        .navbar {
+            background-color: rgba(0, 123, 255, 0.9);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .navbar.sticky {
+            background-color: rgba(0, 123, 255, 1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .nav-link {
+            color: white !important;
+            transition: color 0.3s;
+            font-family: 'Oswald', sans-serif;
+        }
+        .nav-link:hover {
+            color: #ffdd57 !important;
+        }
+        .btn-custom {
+            background-color: rgba(0, 123, 255, 0.9);
+            color: whitesmoke;
+            border: 2px solid transparent;
+            transition: background-color 0.3s, border-color 0.3s;
+            font-family: 'Oswald', sans-serif;
+        }
+        .btn-custom:hover {
+            background-color: #007bff;
+            border-color: white;
+            color: white;
+        }
+        .destinations {
+            padding: 60px 0;
+            background-image: url('pexels-pixabay-33045.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; 
+        }
+        .destinations h2 {
+            color: white;
+            font-family: 'Playfair Display', serif; 
+            font-size: 3rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .destination-item {
+            margin-bottom: 60px;
+            background-color: rgba(255, 255, 255, 0.9); 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .destination-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .destination-item img:hover {
+            transform: scale(1.05); 
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+        }
+        .destination-item h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+            font-family: 'Lora', serif; 
+        }
+        .destination-item p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+            font-family: 'Quicksand', sans-serif; 
+        }
+        .destination-item .price {
+            font-size: 1.5rem;
+            color: rgba(0, 123, 255, 0.9);
+            font-weight: bold;
+            margin: 20px 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .destination-item .btn-travel {
+            background-color: rgba(0, 123, 255, 0.9); 
+            color: white;
+            border: 2px solid transparent;
+            transition: background-color 0.3s, border-color 0.3s;
+            margin-top: 15px;
+            font-family: 'Montserrat', sans-serif; 
+        }
+        .destination-item .btn-travel:hover {
+            background-color: #007bff;
+            border-color: white;
+        }
+        .footer {
+            background-color: rgba(0, 123, 255, 0.9);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .footer p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: #ffdd57;
+        }
+        .social-links {
+            margin-top: 20px;
+        }
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #ffdd57;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <a class="navbar-brand" href="#">
+            <img src="log.png" alt="Travel Agency Logo" height="50">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Destinations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="packages.html">Packages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="blog.html">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+            </ul>
+            <a class="btn btn-custom ml-3" href="quote.html">Get a Quote</a>
+        </div>
+    </nav>
+
+    
+    <section class="destinations">
+        <div class="container">
+            <h2 class="display-4 text-center mb-5">Explore Our Destinations</h2>
+
+            
+            <div class="destination-item">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <img src="pexels-asadphoto-1268855.jpg" alt="Destination 1">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>MADAGASCAR</h3>
+                        <p>An unforgettable adventure filled with unique wildlife, stunning landscapes, and rich culture. From exploring lush rainforests and spotting lemurs in Andasibe-Mantadia National Park to relaxing on the pristine beaches of Nosy Be, the island offers diverse experiences.</p>
+                        <div class="price">From $2,500</div>
+                        <a href="quote.html" class="btn btn-travel">Travel with Us</a>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="destination-item">
+                <div class="row align-items-center">
+                    <div class="col-md-6 order-md-2">
+                        <img src="pexels-apasaric-1510595.jpg" alt="Destination 2">
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                        <h3>JAPAN</h3>
+                        <p> Enjoy world-famous sushi, ramen, and street food, or experience traditional tea ceremonies. Whether skiing in Hokkaido, hiking Mount Fuji, or discovering anime culture in Akihabara, Japan offers an unforgettable mix of culture, nature, and modern excitement.</p>
+                        <div class="price">From $6,000</div>
+                        <a href="quote.html" class="btn btn-travel">Travel with Us</a>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="destination-item">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <img src="pexels-pixabay-356844.jpg" alt="Destination 3">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>NEW YORK CITY</h3>
+                        <p> From the towering skyscrapers of Manhattan to the green oasis of Central Park, every corner of the city has something to explore. Visit Times Square, Broadway, and the Statue of Liberty, or take in breathtaking views from the Empire State Building. </p>
+                        <div class="price">From $7,800</div>
+                        <a href="quote.html" class="btn btn-travel">Travel with Us</a>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="destination-item">
+                <div class="row align-items-center">
+                    <div class="col-md-6 order-md-2">
+                        <img src="pexels-followalice-667200.jpg" alt="Destination 4">
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                        <h3>KENYA</h3>
+                        <p>Witness the Great Migration in the Maasai Mara, where millions of wildebeest and zebras cross the savannah, or embark on a safari to spot the Big Five. Explore the picturesque beaches of Diani, hike Mount Kenya, or visit Nairobi’s vibrant markets and museums. </p>
+                        <div class="price">From $1,200</div>
+                        <a href="quote.html" class="btn btn-travel">Travel with Us</a>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="destination-item">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <img src="pexels-apasaric-1510595.jpg" alt="Destination 5">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>CHINA</h3>
+                        <p>Explore the Forbidden City in Beijing, and admire the Terracotta Warriors in Xi’an. Experience the bustling energy of Shanghai’s skyline, cruise through the picturesque karst mountains of Guilin, or visit the peaceful gardens of Suzhou. </p>
+                        <div class="price">From $3,700</div>
+                        <a href="quote.html" class="btn btn-travel">Travel with Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="destination-item">
+                <div class="row align-items-center">
+                    <div class="col-md-6 order-md-2">
+                        <img src="pexels-thorsten-technoman-109353-338504.jpg" alt="Destination 6">
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                        <h3>ZANZIBAR</h3>
+                        <p> Snorkel or dive in the turquoise waters of Mnemba Atoll, where colorful marine life thrives. Experience the blend of African, Arabic, and European influences in Zanzibar’s cuisine and architecture. </p>
+                        <div class="price">From $1,300</div>
+                        <a href="quote.html" class="btn btn-travel">Travel with Us</a>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="destination-item">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <img src="pexels-michael-spadoni-269949-813465.jpg" alt="Destination 7">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>HAWAII</h3>
+                        <p>A tropical paradise filled with breathtaking landscapes, rich culture, and endless adventure. Relax on the golden beaches of Waikiki, explore volcanic craters at Hawaiʻi Volcanoes National Park, or hike through lush rainforests to hidden waterfalls.</p>
+                        <div class="price">From $5,000</div>
+                        <a href="quote.html" class="btn btn-travel">Travel with Us</a>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="destination-item">
+                <div class="row align-items-center">
+                    <div class="col-md-6 order-md-2">
+                        <img src="pexels-davidmceachan-71241.jpg" alt="Destination 8">
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                        <h3>EGYPT</h3>
+                        <p> Stand in awe of the Great Pyramids of Giza and the Sphinx, explore the temples of Luxor and Karnak, and sail down the Nile on a traditional felucca.</p>
+                        <div class="price">From $1,800</div>
+                        <a href="quote.html" class="btn btn-travel">Travel with Us</a>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="destination-item">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <img src="pexels-elina-sazonova-1850619.jpg" alt="Destination 9">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>PARIS</h3>
+                        <p> Stroll along the Seine, admire the Eiffel Tower, and explore the Louvre’s masterpieces, including the Mona Lisa. Wander through charming neighborhoods like Montmartre and Le Marais, sip coffee at a classic Parisian café, and indulge in delicious pastries and gourmet cuisine.</p>
+                        <div class="price">From $4,600</div>
+                        <a href="quote.html" class="btn btn-travel">Travel with Us</a>
+                    </div>
+                </div>
+            </div>
+
+           
+            <div class="destination-item">
+                <div class="row align-items-center">
+                    <div class="col-md-6 order-md-2">
+                        <img src="pexels-jonnylew-1637146.jpg" alt="Destination 10">
+                    </div>
+                    <div class="col-md-6 order-md-1">
+                        <h3>VICTORIA FALLS</h3>
+                        <p>A breathtaking experience, showcasing one of the world’s largest and most spectacular waterfalls. Straddling the border of Zambia and Zimbabwe, the "Smoke That Thunders" offers stunning views, thrilling adventures, and rich wildlife. </p>
+                        <div class="price">From $1,900</div>
+                        <a href="quote.html" class="btn btn-travel">Travel with Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <h4>Lux Travel Agency</h4>
+            <p>Explore the world with us. Your adventure starts here.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/zinduaschool/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/i/flow/login?redirect_after_login=%2FZinduaSchool" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://ke.linkedin.com/school/zinduaschool/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>Contact us: <a href="mailto:info@travelagency.com">info@luxtravelagency.com</a> | <a href="tel:+254712345678">+254 712 345 678</a></p>
+            <p>&copy; 2024 Lux Travel Agency. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

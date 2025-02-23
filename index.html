@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lux Travel Agency</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&family=Dancing+Script:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+        .navbar {
+            background-color: rgba(0, 123, 255, 0.9);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+        .navbar.sticky {
+            background-color: rgba(0, 123, 255, 1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        .nav-link {
+            color: white !important;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #ffdd57 !important;
+        }
+        .btn-custom {
+            background-color: rgba(0, 123, 255, 0.9);
+            color: whitesmoke;
+            border: 2px solid transparent;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .btn-custom:hover {
+            background-color: #007bff;
+            border-color: white;
+            color: white;
+        }
+        .header-image {
+            position: relative;
+            height: 100vh;
+            background: url('town.jpg') no-repeat center center/cover;
+        }
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .overlay h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: white;
+            animation: move 2s infinite alternate;
+        }
+        .overlay h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: white;
+            animation: move 2s infinite alternate;
+        }
+        .overlay .btn {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.2rem;
+            animation: move 2s infinite alternate;
+        }
+        @keyframes move {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-10px);
+            }
+        }
+        .featured-trips {
+            padding: 60px 0;
+            text-align: center;
+            background-color: rgba(0, 123, 255, 0.9);
+            color: white;
+        }
+        .featured-trips h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+        .trip-card {
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+        .trip-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .trip-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .trip-card:hover img {
+            transform: scale(1.1);
+        }
+        .trip-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-top: 15px;
+            color: #333;
+        }
+        .trip-card p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            color: #666;
+            padding: 0 15px 15px;
+        }
+        .about-us {
+            padding: 60px 0;
+            background-color: white;
+            text-align: left; /* Align text to the left */
+        }
+        .about-us h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: rgba(0, 123, 255, 0.9);
+            margin-bottom: 20px;
+            text-align: left; /* Align heading to the left */
+        }
+        .about-us p {
+            font-family: 'Great Vibes', cursive; /* Fancy font */
+            font-size: 1.5rem; /* Larger font size */
+            color: #333;
+            line-height: 1.8;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+            text-align: left; /* Align text to the left */
+        }
+        .footer {
+            background-color: rgba(0, 123, 255, 0.9);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .footer p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .footer a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer a:hover {
+            color: #ffdd57;
+        }
+        .social-links {
+            margin-top: 20px;
+        }
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: #ffdd57;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <a class="navbar-brand" href="#">
+            <img src="log.png" alt="Travel Agency Logo" height="50">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="destination.html">Destinations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="packages.html">Packages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="blog.html">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+            </ul>
+            <a class="btn btn-custom ml-3" href="quote.html">Get a Quote</a>
+        </div>
+    </nav>
+
+    <header class="header-image">
+        <div class="overlay">
+            <h1 class="animate">Welcome to Lux Travel Agency</h1>
+            <h2 class="animate">Your Adventure Awaits</h2>
+            <a href="packages.html" class="btn btn-custom btn-lg mt-4 animate">View Packages</a>
+        </div>
+    </header>
+
+    <section class="featured-trips">
+        <div class="container">
+            <h2>Featured Trips</h2>
+            <div class="row">
+                <div class="col-lg-4 trip-card">
+                    <img src="pexels-asadphoto-1268855.jpg" alt="Maldives" class="img-fluid">
+                    <h3>Maldives</h3>
+                    <p> A dream getaway filled with crystal-clear waters, white sandy beaches, and luxurious overwater bungalows. Whether you’re snorkeling among vibrant coral reefs, enjoying a sunset cruise on a traditional dhoni boat, or simply relaxing in a private villa, the Maldives offers a perfect blend of adventure and relaxation. With world-class diving spots, spa treatments by the ocean, and exquisite seafood, every moment feels like paradise.</p>
+                </div>
+                <div class="col-lg-4 trip-card">
+                    <img src="pexels-dominikagregus-672532.jpg" alt="Trip 2" class="img-fluid">
+                    <h3>London</h3>
+                    <p>a vibrant mix of history, culture, and modern city life. From exploring iconic landmarks like Big Ben, the Tower of London, and Buckingham Palace to strolling along the Thames and visiting world-class museums, there’s always something to see. </p>
+                </div>
+                <div class="col-lg-4 trip-card">
+                    <img src="pexels-dreamypixel-547116.jpg" alt="Trip 3" class="img-fluid">
+                    <h3>Mountain climbing</h3>
+                    <p>Whether scaling rugged peaks or trekking through scenic trails, the journey offers breathtaking views, fresh mountain air, and a deep connection with nature. From challenging ascents to rewarding summits, each step brings a sense of accomplishment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-us">
+        <div class="container">
+            <h2>Our Story</h2>
+            <p>
+                Founded in 2010, <strong> Lux Travel Agency</strong> has been dedicated to creating unforgettable travel experiences for our clients. 
+                With a passion for exploration and a commitment to excellence, we have grown into one of the most trusted names in the travel industry. 
+                Our team of experts works tirelessly to craft personalized itineraries that cater to your unique preferences, ensuring every journey is as special as you are.
+            </p>
+            <p>
+                Over the years, we have helped thousands of travelers discover the world's most breathtaking destinations. 
+                From exotic beaches to bustling cities, we believe that every trip should be an adventure filled with joy, discovery, and lifelong memories. 
+                Join us, and let’s make your travel dreams come true!
+            </p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <h4>Lux Travel Agency</h4>
+            <p>Explore the world with us. Your adventure starts here.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/zinduaschool/" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/i/flow/login?redirect_after_login=%2FZinduaSchool" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://ke.linkedin.com/school/zinduaschool/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>Contact us: <a href="mailto:info@travelagency.com">info@luxtravelagency.com</a> | <a href="tel:+254712345678">+254 712 345 678</a></p>
+            <p>&copy; 2024 Lux Travel Agency. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
