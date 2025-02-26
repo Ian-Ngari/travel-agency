@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&family=Dancing+Script:wght@700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&family=Dancing+Script:wght@700&family=Great+Vibes&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&family=Dancing+Script:wght@700&family=Great+Vibes&family=Montserrat:wght@400;700&family=Pacifico&family=Quicksand:wght@400;700&family=Lora:wght@400;700&family=Raleway:wght@400;700&family=Merriweather:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -26,6 +27,7 @@
         .nav-link {
             color: white !important;
             transition: color 0.3s;
+            font-family: 'Oswald', sans-serif;
         }
         .nav-link:hover {
             color: #ffdd57 !important;
@@ -35,6 +37,7 @@
             color: whitesmoke;
             border: 2px solid transparent;
             transition: background-color 0.3s, border-color 0.3s;
+            font-family: 'Oswald', sans-serif;
         }
         .btn-custom:hover {
             background-color: #007bff;
@@ -93,7 +96,7 @@
             margin-bottom: 40px;
         }
         .trip-card {
-            margin-bottom: 30px;
+            margin: 15px; /* Added margin to create spacing between cards */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border-radius: 10px;
             overflow: hidden;
@@ -129,23 +132,23 @@
         .about-us {
             padding: 60px 0;
             background-color: white;
-            text-align: left; /* Align text to the left */
+            text-align: left;
         }
         .about-us h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             color: rgba(0, 123, 255, 0.9);
             margin-bottom: 20px;
-            text-align: left; /* Align heading to the left */
+            text-align: left;
         }
         .about-us p {
-            font-family: 'Great Vibes', cursive; /* Fancy font */
-            font-size: 1.5rem; /* Larger font size */
+            font-family: 'Merriweather', serif; /* Updated font */
+            font-size: 1.2rem; /* Adjusted font size */
             color: #333;
             line-height: 1.8;
-            margin: 0; /* Remove default margin */
-            padding: 0; /* Remove default padding */
-            text-align: left; /* Align text to the left */
+            margin: 0;
+            padding: 0;
+            text-align: left;
         }
         .footer {
             background-color: rgba(0, 123, 255, 0.9);
@@ -227,11 +230,12 @@
     <section class="featured-trips">
         <div class="container">
             <h2>Featured Trips</h2>
-            <div class="row">
+            <div class="row justify-content-center"> 
                 <div class="col-lg-4 trip-card">
+                    
                     <img src="pexels-asadphoto-1268855.jpg" alt="Maldives" class="img-fluid">
                     <h3>Maldives</h3>
-                    <p> A dream getaway filled with crystal-clear waters, white sandy beaches, and luxurious overwater bungalows. Whether you’re snorkeling among vibrant coral reefs, enjoying a sunset cruise on a traditional dhoni boat, or simply relaxing in a private villa, the Maldives offers a perfect blend of adventure and relaxation. With world-class diving spots, spa treatments by the ocean, and exquisite seafood, every moment feels like paradise.</p>
+                    <p> A dream getaway filled with crystal-clear waters, white sandy beaches, and luxurious overwater bungalows.The Maldives offers a perfect blend of adventure and relaxation. With world-class diving spots, spa treatments by the ocean, and exquisite seafood, every moment feels like paradise.</p>
                 </div>
                 <div class="col-lg-4 trip-card">
                     <img src="pexels-dominikagregus-672532.jpg" alt="Trip 2" class="img-fluid">
