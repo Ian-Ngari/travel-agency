@@ -14,22 +14,42 @@
             font-family: 'Raleway', sans-serif;
             background-color: #f8f9fa;
         }
+
         .navbar {
             background-color: rgba(0, 123, 255, 0.9);
             transition: background-color 0.3s, box-shadow 0.3s;
         }
+
         .navbar.sticky {
             background-color: rgba(0, 123, 255, 1);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
+
         .nav-link {
             color: white !important;
             transition: color 0.3s;
             font-family: 'Oswald', sans-serif;
+            margin: 0 10px; /* Consistent spacing between nav items */
         }
+
         .nav-link:hover {
             color: #ffdd57 !important;
         }
+
+        .logout-btn {
+            background-color: #dc3545; /* Red color for logout button */
+            color: white;
+            border: 2px solid transparent;
+            transition: background-color 0.3s, border-color 0.3s;
+            font-family: 'Oswald', sans-serif;
+            margin-left: 10px; /* Spacing between Get a Quote and Logout */
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333; /* Darker red on hover */
+            border-color: white;
+        }
+
         .btn-custom {
             background-color: rgba(0, 123, 255, 0.9);
             color: whitesmoke;
@@ -37,15 +57,18 @@
             transition: background-color 0.3s, border-color 0.3s;
             font-family: 'Oswald', sans-serif;
         }
+
         .btn-custom:hover {
             background-color: #007bff;
             border-color: white;
             color: white;
         }
+
         .blog {
             padding: 60px 0;
             position: relative;
         }
+
         .blog::before {
             content: '';
             position: fixed;
@@ -53,12 +76,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('pexels-thinus-pretorius-170978742-26772001.jpg');
+            background-image: url('pexels-thinus-pretorius-170978742-26772001.jpg'); /* Add your background image here */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             z-index: -1;
         }
+
         .blog h2 {
             color: rgba(0, 123, 255, 0.9);
             text-align: center;
@@ -67,6 +91,7 @@
             font-weight: bold;
             font-family: 'Playfair Display', serif;
         }
+
         .blog-card {
             background-color: white;
             border-radius: 10px;
@@ -74,31 +99,56 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             margin-bottom: 30px;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Ensure all cards are the same height */
         }
+
         .blog-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
+
         .blog-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
+
         .blog-card .card-body {
             padding: 20px;
+            flex: 1; /* Ensure the card body takes up remaining space */
+            display: flex;
+            flex-direction: column;
         }
+
         .blog-card h3 {
             font-size: 1.8rem;
             color: #333;
             margin-bottom: 15px;
             font-family: 'Merriweather', serif;
         }
+
         .blog-card p {
             font-size: 1rem;
             color: #666;
             line-height: 1.6;
             font-family: 'Quicksand', sans-serif;
+            flex: 1; /* Ensure the paragraph takes up remaining space */
         }
+
+        .blog-card .meta {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        .blog-card .meta i {
+            color: rgba(0, 123, 255, 0.9);
+            margin-right: 10px;
+        }
+
         .blog-card .btn-read-more {
             background-color: rgba(0, 123, 255, 0.9);
             color: white;
@@ -107,59 +157,89 @@
             border-radius: 5px;
             transition: background-color 0.3s ease;
             font-family: 'Oswald', sans-serif;
+            text-align: center;
+            margin-top: 10px;
         }
+
         .blog-card .btn-read-more:hover {
             background-color: #007bff;
         }
-        .blog-card .meta {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 15px;
+
+        .share-section {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .share-section p {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 10px;
             font-family: 'Quicksand', sans-serif;
         }
-        .blog-card .meta i {
-            color: rgba(0, 123, 255, 0.9);
-            margin-right: 10px;
+
+        .share-section .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
         }
+
+        .share-section .social-links a {
+            color: rgba(0, 123, 255, 0.9);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .share-section .social-links a:hover {
+            color: #0056b3;
+        }
+
         .footer {
             background-color: rgba(0, 123, 255, 0.9);
             color: white;
             padding: 40px 0;
             text-align: center;
         }
+
         .footer h4 {
             font-family: 'Pacifico', cursive;
             font-size: 1.5rem;
             margin-bottom: 20px;
         }
+
         .footer p {
             font-family: 'Quicksand', sans-serif;
             font-size: 1rem;
             margin-bottom: 10px;
         }
+
         .footer a {
             color: white;
             text-decoration: none;
             transition: color 0.3s ease;
         }
+
         .footer a:hover {
             color: #ffdd57;
         }
+
         .social-links {
             margin-top: 20px;
         }
+
         .social-links a {
             color: white;
             font-size: 1.5rem;
             margin: 0 10px;
             transition: color 0.3s ease;
         }
+
         .social-links a:hover {
             color: #ffdd57;
         }
     </style>
 </head>
 <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <a class="navbar-brand" href="#">
             <img src="log.png" alt="Travel Agency Logo" height="50">
@@ -179,20 +259,29 @@
                     <a class="nav-link" href="packages.html">Packages</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Blog</a>
+                    <a class="nav-link" href="blog.html">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="quote.html">Contact Us</a>
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quote.html">Get a Quote</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link logout-btn" href="#" id="logout">Logout</a>
                 </li>
             </ul>
-            <a class="btn btn-custom ml-3" href="#">Get a Quote</a>
         </div>
     </nav>
 
+    <!-- Blog Section -->
     <section class="blog">
         <div class="container">
             <h2>Our Travel Blog</h2>
+
+            <!-- Blog Cards -->
             <div class="row">
+                <!-- Blog 1 -->
                 <div class="col-lg-4 col-md-6">
                     <div class="blog-card">
                         <img src="destinations.jpeg" alt="Blog Post 1">
@@ -204,10 +293,19 @@
                             </div>
                             <p>Discover the top 10 must-visit destinations for 2024. From exotic beaches to bustling cities, we've got you covered.</p>
                             <a href="blog-post-1.html" class="btn btn-read-more">Read More</a>
+                            <div class="share-section">
+                                <p>Share:</p>
+                                <div class="social-links">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com/blog-post-1" target="_blank"><i class="fab fa-facebook"></i></a>
+                                    <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20blog%20post%20from%20Lux%20Travel%20Agency!&url=https://example.com/blog-post-1" target="_blank"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://example.com/blog-post-1" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Blog 2 -->
                 <div class="col-lg-4 col-md-6">
                     <div class="blog-card">
                         <img src="first timers.jpeg" alt="Blog Post 2">
@@ -219,10 +317,19 @@
                             </div>
                             <p>Traveling for the first time? Check out our essential tips to make your journey smooth and enjoyable.</p>
                             <a href="blog-post-2.html" class="btn btn-read-more">Read More</a>
+                            <div class="share-section">
+                                <p>Share:</p>
+                                <div class="social-links">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com/blog-post-2" target="_blank"><i class="fab fa-facebook"></i></a>
+                                    <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20blog%20post%20from%20Lux%20Travel%20Agency!&url=https://example.com/blog-post-2" target="_blank"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://example.com/blog-post-2" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Blog 3 -->
                 <div class="col-lg-4 col-md-6">
                     <div class="blog-card">
                         <img src="gadgets.jpeg" alt="Blog Post 3">
@@ -234,10 +341,19 @@
                             </div>
                             <p>Explore the best travel gadgets that will make your trips more convenient and fun.</p>
                             <a href="blog-post-3.html" class="btn btn-read-more">Read More</a>
+                            <div class="share-section">
+                                <p>Share:</p>
+                                <div class="social-links">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com/blog-post-3" target="_blank"><i class="fab fa-facebook"></i></a>
+                                    <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20blog%20post%20from%20Lux%20Travel%20Agency!&url=https://example.com/blog-post-3" target="_blank"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://example.com/blog-post-3" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Blog 4 -->
                 <div class="col-lg-4 col-md-6">
                     <div class="blog-card">
                         <img src="download.jpeg" alt="Blog Post 4">
@@ -249,10 +365,19 @@
                             </div>
                             <p>Discover hidden gems around the world that are off the beaten path.</p>
                             <a href="blog-post-4.html" class="btn btn-read-more">Read More</a>
+                            <div class="share-section">
+                                <p>Share:</p>
+                                <div class="social-links">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com/blog-post-4" target="_blank"><i class="fab fa-facebook"></i></a>
+                                    <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20blog%20post%20from%20Lux%20Travel%20Agency!&url=https://example.com/blog-post-4" target="_blank"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://example.com/blog-post-4" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Blog 5 -->
                 <div class="col-lg-4 col-md-6">
                     <div class="blog-card">
                         <img src="foodie.png" alt="Blog Post 5">
@@ -264,10 +389,19 @@
                             </div>
                             <p>Embark on a culinary journey and explore the best food destinations around the globe.</p>
                             <a href="blog-post-5.html" class="btn btn-read-more">Read More</a>
+                            <div class="share-section">
+                                <p>Share:</p>
+                                <div class="social-links">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com/blog-post-5" target="_blank"><i class="fab fa-facebook"></i></a>
+                                    <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20blog%20post%20from%20Lux%20Travel%20Agency!&url=https://example.com/blog-post-5" target="_blank"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://example.com/blog-post-5" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Blog 6 -->
                 <div class="col-lg-4 col-md-6">
                     <div class="blog-card">
                         <img src="eco friendly.jpeg" alt="Blog Post 6">
@@ -279,6 +413,14 @@
                             </div>
                             <p>Learn how to travel sustainably and reduce your carbon footprint while exploring the world.</p>
                             <a href="blog-post-6.html" class="btn btn-read-more">Read More</a>
+                            <div class="share-section">
+                                <p>Share:</p>
+                                <div class="social-links">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com/blog-post-6" target="_blank"><i class="fab fa-facebook"></i></a>
+                                    <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20blog%20post%20from%20Lux%20Travel%20Agency!&url=https://example.com/blog-post-6" target="_blank"><i class="fab fa-twitter"></i></a>
+                                    <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://example.com/blog-post-6" target="_blank"><i class="fab fa-linkedin"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -286,6 +428,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <h4>Lux Travel Agency</h4>
@@ -300,6 +443,68 @@
             <p>&copy; 2024 Lux Travel Agency. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Equalize Card Heights
+        function equalizeCardHeights() {
+            const cards = document.querySelectorAll('.blog-card');
+            let maxHeight = 0;
+
+            // Reset heights to auto to recalculate
+            cards.forEach(card => {
+                card.style.height = 'auto';
+            });
+
+            // Find the tallest card
+            cards.forEach(card => {
+                if (card.offsetHeight > maxHeight) {
+                    maxHeight = card.offsetHeight;
+                }
+            });
+
+            // Set all cards to the tallest height
+            cards.forEach(card => {
+                card.style.height = `${maxHeight}px`;
+            });
+        }
+
+        // Call the function on page load and window resize
+        window.addEventListener('load', equalizeCardHeights);
+        window.addEventListener('resize', equalizeCardHeights);
+
+        // Logout functionality with custom modal
+        document.getElementById('logout').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            $('#logoutModal').modal('show'); // Show the logout confirmation modal
+        });
+
+        document.getElementById('confirmLogout').addEventListener('click', function() {
+            localStorage.removeItem('isLoggedIn'); // Clear login status
+            $('#logoutModal').modal('hide'); // Hide the modal
+            window.location.href = 'login.html'; // Redirect to login page
+        });
+    </script>
+
+    <!-- Custom Modal for Logout Confirmation -->
+    <div class="modal fade custom-modal" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">Logout Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to log out?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="confirmLogout">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
