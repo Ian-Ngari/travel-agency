@@ -416,6 +416,17 @@
             $('#logoutModal').modal('hide'); // Hide the modal
             window.location.href = 'login.html'; // Redirect to login page
         });
+
+        // Submit Request Login Check
+        document.getElementById("quoteForm").addEventListener("submit", function(event) {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+            if (!isLoggedIn) {
+                event.preventDefault(); // Prevent form submission
+                alert("You must be logged in to submit a request. Redirecting to login page...");
+                window.location.href = "login.html"; // Redirect to login page
+            }
+        });
     </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

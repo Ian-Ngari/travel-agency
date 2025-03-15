@@ -507,7 +507,43 @@
         </div>
     </div>
 
+    <!-- Login Alert Modal -->
+    <div class="modal fade" id="loginAlertModal" tabindex="-1" aria-labelledby="loginAlertModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginAlertModalLabel">Login Required</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>You must be logged in to book a trip. Please <a href="login.html">log in</a> or <a href="signup.html">sign up</a> to continue.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a href="login.html" class="btn btn-primary">Log In</a>
+                    <a href="signup.html" class="btn btn-success">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Check if user is logged in
+        const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+        // Add event listeners to all "Travel with Us" buttons
+        const travelButtons = document.querySelectorAll('.btn-travel');
+        travelButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                if (!isLoggedIn) {
+                    event.preventDefault(); // Prevent default link behavior
+                    $('#loginAlertModal').modal('show'); // Show the login alert modal
+                }
+            });
+        });
+
         // Logout functionality with custom modal
         document.getElementById('logout').addEventListener('click', function(event) {
             event.preventDefault(); // Prevent default link behavior

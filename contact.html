@@ -352,6 +352,28 @@
         </div>
     </div>
 
+    <!-- Login Alert Modal -->
+    <div class="modal fade" id="loginAlertModal" tabindex="-1" aria-labelledby="loginAlertModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginAlertModalLabel">Login Required</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>You must be logged in to send a message. Please <a href="login.html">log in</a> or <a href="signup.html">sign up</a> to continue.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <a href="login.html" class="btn btn-primary">Log In</a>
+                    <a href="signup.html" class="btn btn-success">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Toast Notification Function
         function showToast(message) {
@@ -368,7 +390,15 @@
         // Contact Form Submission
         document.getElementById("contactForm").addEventListener("submit", function(event) {
             event.preventDefault();
-            showToast("Form submitted successfully!");
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+            if (!isLoggedIn) {
+                $('#loginAlertModal').modal('show'); // Show login alert modal
+            } else {
+                showToast("Form submitted successfully!");
+                // Optionally, you can redirect to another page after submission
+                // window.location.href = "thank-you.html";
+            }
         });
 
         // Logout functionality with custom modal
