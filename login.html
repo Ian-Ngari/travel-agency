@@ -121,32 +121,48 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+      
+      document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-            // Retrieve saved credentials from localStorage
-            const savedUsername = localStorage.getItem('username');
-            const savedPassword = localStorage.getItem('password');
-
-            if (username === savedUsername && password === savedPassword) {
-                // Save login status in localStorage
-                localStorage.setItem('isLoggedIn', 'true');
-
-                // Show the success modal
-                $('#successModal').modal('show');
-
-                // Redirect to the index page after the modal is closed
-                $('#successModal').on('hidden.bs.modal', function () {
-                    window.location.href = 'index.html';
-                });
-            } else {
-                // Show the error modal
-                $('#errorModal').modal('show');
-            }
+    
+    if (username === "admin" && password === "admin1") {
+        localStorage.setItem('currentUser', 'admin');
+        localStorage.setItem('isAdmin', 'true');
+        
+       
+        $('#successModal .modal-body').text("Logged in as an Admin"); 
+        $('#successModal').modal('show');
+        
+        
+        $('#successModal').on('hidden.bs.modal', function () {
+            window.location.href = "admin-bookings.html";
         });
+        return;
+    }
+
+    
+    const savedUsername = localStorage.getItem('username');
+    const savedPassword = localStorage.getItem('password');
+
+    if (username === savedUsername && password === savedPassword) {
+        localStorage.setItem('isLoggedIn', 'true');
+        
+        $('#successModal .modal-body').text("You have successfully logged in."); 
+        $('#successModal').modal('show');
+        
+        
+        $('#successModal').on('hidden.bs.modal', function () {
+            window.location.href = 'index.html';
+        });
+    } else {
+       
+        $('#errorModal').modal('show');
+    }
+});
     </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

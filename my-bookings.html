@@ -113,7 +113,7 @@
         <div id="quoteList"></div>
     </div>
 
-    
+    <!-- Edit Booking Modal -->
     <div class="modal fade" id="editBookingModal" tabindex="-1" aria-labelledby="editBookingModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -166,41 +166,114 @@
     </div>
 
     <script>
-        let currentEditIndex = null; 
+        let currentEditIndex = null; // To track the booking being edited
 
-        // Load bookings from localStorage
         document.addEventListener("DOMContentLoaded", () => {
-            const quoteList = document.getElementById("quoteList");
-            const quotes = JSON.parse(localStorage.getItem("quotes") || "[]");
+            const isLoggedIn = localStorage.getItem("isLoggedIn");
+            const isAdmin = localStorage.getItem("isAdmin") === "true";
+            const currentUser = localStorage.getItem("currentUser");
 
-            if (quotes.length === 0) {
-                quoteList.innerHTML = "<p style='text-align:center;'>No bookings available.</p>";
+            if (!isLoggedIn) {
+                alert("You must be logged in to view this page.");
+                window.location.href = "login.html";
                 return;
             }
 
-            quotes.forEach((q, index) => {
-                const card = document.createElement("div");
-                card.className = "card";
-                card.innerHTML = `
-                    <h3>${q.destination}</h3>
-                    <p><strong>Name:</strong> ${q.name}</p>
-                    <p><strong>Email:</strong> ${q.email}</p>
-                    <p><strong>Travel Dates:</strong> ${q.travelDates}</p>
-                    <p><strong>Travelers:</strong> ${q.travelers}</p>
-                    <p><strong>Additional Info:</strong> ${q.additionalInfo}</p>
-                    <small><strong>Submitted At:</strong> ${q.submittedAt}</small>
-                    <div class="actions">
-                        <button class="btn btn-custom" onclick="editBooking(${index})">Edit</button>
-                        <button class="btn btn-danger" onclick="deleteBooking(${index})">Delete</button>
-                    </div>
-                `;
-                quoteList.appendChild(card);
-            });
+            const quoteList = document.getElementById("quoteList");
+
+            if (isAdmin) {
+                // Admin: Load all bookings from all users
+                const allBookings = [];
+
+                // Loop through localStorage to find all bookings
+                for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i);
+                    if (key.startsWith("user_")) {
+                        const userBookings = JSON.parse(localStorage.getItem(key));
+                        allBookings.push(...userBookings);
+                    }
+                }
+
+                if (allBookings.length === 0) {
+                    quoteList.innerHTML = "<p style='text-align:center;'>No bookings available.</p>";
+                } else {
+                    // Display all bookings
+                    allBookings.forEach((q, index) => {
+                        const card = document.createElement("div");
+                        card.className = "card";
+                        card.innerHTML = `
+                            <h3>${q.destination}</h3>
+                            <p><strong>Name:</strong> ${q.name}</p>
+                            <p><strong>Email:</strong> ${q.email}</p>
+                            <p><strong>Travel Dates:</strong> ${q.travelDates}</p>
+                            <p><strong>Travelers:</strong> ${q.travelers}</p>
+                            <p><strong>Additional Info:</strong> ${q.additionalInfo}</p>
+                            <small><strong>Submitted At:</strong> ${q.submittedAt}</small>
+                            <div class="actions">
+                                <button class="btn btn-custom" onclick="editBooking(${index})">Edit</button>
+                                <button class="btn btn-danger" onclick="deleteBooking(${index})">Delete</button>
+                            </div>
+                        `;
+                        quoteList.appendChild(card);
+                    });
+                }
+            } else {
+                // Regular user: Load only their bookings
+                const userKey = `user_${currentUser}`;
+                const userBookings = JSON.parse(localStorage.getItem(userKey) || "[]");
+
+                if (userBookings.length === 0) {
+                    quoteList.innerHTML = "<p style='text-align:center;'>No bookings available.</p>";
+                } else {
+                    // Display user's bookings
+                    userBookings.forEach((q, index) => {
+                        const card = document.createElement("div");
+                        card.className = "card";
+                        card.innerHTML = `
+                            <h3>${q.destination}</h3>
+                            <p><strong>Name:</strong> ${q.name}</p>
+                            <p><strong>Email:</strong> ${q.email}</p>
+                            <p><strong>Travel Dates:</strong> ${q.travelDates}</p>
+                            <p><strong>Travelers:</strong> ${q.travelers}</p>
+                            <p><strong>Additional Info:</strong> ${q.additionalInfo}</p>
+                            <small><strong>Submitted At:</strong> ${q.submittedAt}</small>
+                            <div class="actions">
+                                <button class="btn btn-custom" onclick="editBooking(${index})">Edit</button>
+                                <button class="btn btn-danger" onclick="deleteBooking(${index})">Delete</button>
+                            </div>
+                        `;
+                        quoteList.appendChild(card);
+                    });
+                }
+            }
+
+            // Logout functionality
+            const logoutButton = document.getElementById("logout");
+            if (logoutButton) {
+                logoutButton.addEventListener("click", function(event) {
+                    event.preventDefault(); // Prevent the default link behavior
+
+                    // Clear user-related data from localStorage
+                    localStorage.removeItem("currentUser");
+                    localStorage.removeItem("isAdmin");
+                    localStorage.removeItem("isLoggedIn");
+
+                    // Redirect to the login page
+                    window.location.href = "login.html";
+                });
+            }
         });
 
         // Edit Booking
         function editBooking(index) {
-            const quotes = JSON.parse(localStorage.getItem("quotes") || "[]");
+            const isAdmin = localStorage.getItem("isAdmin") === "true";
+            const currentUser = localStorage.getItem("currentUser");
+            const userKey = isAdmin ? null : `user_${currentUser}`;
+
+            const quotes = isAdmin
+                ? getAllBookings()
+                : JSON.parse(localStorage.getItem(userKey) || "[]");
+
             const booking = quotes[index];
 
             // Populate the edit modal with booking data
@@ -211,13 +284,19 @@
             document.getElementById("editTravelers").value = booking.travelers;
             document.getElementById("editAdditionalInfo").value = booking.additionalInfo;
 
-            currentEditIndex = index; 
-            $('#editBookingModal').modal('show'); 
+            currentEditIndex = index; // Track the index of the booking being edited
+            $('#editBookingModal').modal('show'); // Show the modal
         }
 
         // Save Changes
         document.getElementById("saveChanges").addEventListener("click", () => {
-            const quotes = JSON.parse(localStorage.getItem("quotes") || "[]");
+            const isAdmin = localStorage.getItem("isAdmin") === "true";
+            const currentUser = localStorage.getItem("currentUser");
+            const userKey = isAdmin ? null : `user_${currentUser}`;
+
+            const quotes = isAdmin
+                ? getAllBookings()
+                : JSON.parse(localStorage.getItem(userKey) || "[]");
 
             // Update the booking with new data
             quotes[currentEditIndex] = {
@@ -230,17 +309,52 @@
                 submittedAt: new Date().toLocaleString()
             };
 
-            localStorage.setItem("quotes", JSON.stringify(quotes)); 
-            $('#editBookingModal').modal('hide'); 
-            location.reload(); 
+            if (isAdmin) {
+                // Save all bookings back to localStorage
+                localStorage.setItem("allBookings", JSON.stringify(quotes));
+            } else {
+                // Save user's bookings back to localStorage
+                localStorage.setItem(userKey, JSON.stringify(quotes));
+            }
+
+            $('#editBookingModal').modal('hide'); // Hide the modal
+            location.reload(); // Refresh the page to show updated bookings
         });
 
         // Delete Booking
         function deleteBooking(index) {
-            const quotes = JSON.parse(localStorage.getItem("quotes") || "[]");
-            quotes.splice(index, 1); 
-            localStorage.setItem("quotes", JSON.stringify(quotes)); 
-            location.reload(); 
+            const isAdmin = localStorage.getItem("isAdmin") === "true";
+            const currentUser = localStorage.getItem("currentUser");
+            const userKey = isAdmin ? null : `user_${currentUser}`;
+
+            const quotes = isAdmin
+                ? getAllBookings()
+                : JSON.parse(localStorage.getItem(userKey) || "[]");
+
+            quotes.splice(index, 1); // Remove the booking at the specified index
+
+            if (isAdmin) {
+                // Save all bookings back to localStorage
+                localStorage.setItem("allBookings", JSON.stringify(quotes));
+            } else {
+                // Save user's bookings back to localStorage
+                localStorage.setItem(userKey, JSON.stringify(quotes));
+            }
+
+            location.reload(); // Refresh the page to show updated bookings
+        }
+
+        // Helper function to get all bookings for admin
+        function getAllBookings() {
+            const allBookings = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith("user_")) {
+                    const userBookings = JSON.parse(localStorage.getItem(key));
+                    allBookings.push(...userBookings);
+                }
+            }
+            return allBookings;
         }
     </script>
 

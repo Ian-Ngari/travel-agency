@@ -197,7 +197,6 @@
             font-weight: bold;
             color: rgba(0, 123, 255, 0.9);
         }
-        /* Custom Modal Styles */
         .custom-modal .modal-content {
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -222,7 +221,6 @@
     </style>
 </head>
 <body>
-    
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <a class="navbar-brand" href="#">
             <img src="log.png" alt="Travel Agency Logo" height="50">
@@ -260,7 +258,6 @@
         </div>
     </nav>
 
-    
     <section class="quote">
         <div class="container">
             <h2>Get a Quote</h2>
@@ -346,7 +343,6 @@
         </div>
     </section>
 
-    
     <footer class="footer">
         <div class="container">
             <h4>Lux Travel Agency</h4>
@@ -362,7 +358,6 @@
         </div>
     </footer>
 
-    
     <!-- Quote Submission Confirmation Modal -->
     <div class="modal fade custom-modal" id="quoteConfirmationModal" tabindex="-1" aria-labelledby="quoteConfirmationModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -444,8 +439,63 @@
         </div>
     </div>
 
-    
     <script>
+        // Quote Form Submission
+        document.getElementById("quoteForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const currentUser = localStorage.getItem('currentUser');
+
+            if (!isLoggedIn) {
+                $('#loginRequirementModal').modal('show'); 
+                setTimeout(() => {
+                    window.location.href = "login.html"; 
+                }, 3000); 
+                return;
+            }
+
+            const name = document.getElementById("quoteName").value;
+            const email = document.getElementById("quoteEmail").value;
+            const destination = document.getElementById("quoteDestination").value;
+            const travelDates = document.getElementById("quoteDates").value;
+            const travelers = document.getElementById("quoteTravelers").value;
+            const additionalInfo = document.getElementById("quoteInfo").value;
+
+            // Create a booking object
+            const booking = {
+                name,
+                email,
+                destination,
+                travelDates,
+                travelers,
+                additionalInfo,
+                submittedAt: new Date().toLocaleString()
+            };
+
+            // Save booking under the user's key
+            const userKey = `user_${currentUser}`;
+            const userBookings = JSON.parse(localStorage.getItem(userKey) || "[]");
+            userBookings.push(booking);
+            localStorage.setItem(userKey, JSON.stringify(userBookings));
+
+            // Show confirmation modal
+            $('#quoteConfirmationModal').modal('show'); 
+            document.getElementById("quoteForm").reset();
+        });
+
+        // Logout functionality with custom modal
+        document.getElementById('logout').addEventListener('click', function(event) {
+            event.preventDefault(); 
+            $('#logoutModal').modal('show'); 
+        });
+
+        document.getElementById('confirmLogout').addEventListener('click', function() {
+            localStorage.removeItem('isLoggedIn'); 
+            localStorage.removeItem('currentUser'); 
+            $('#logoutModal').modal('hide'); 
+            window.location.href = 'login.html'; 
+        });
+
         // Quote Calculator
         document.getElementById("calculateQuote").addEventListener("click", function() {
             const basePrice = parseFloat(document.getElementById("basePrice").value);
@@ -481,51 +531,6 @@
                 console.error("Error fetching exchange rates:", error);
                 $('#currencyErrorModal').modal('show'); 
             }
-        });
-
-        // Quote Form Submission
-        document.getElementById("quoteForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            const isLoggedIn = localStorage.getItem('isLoggedIn');
-
-            if (!isLoggedIn) {
-                $('#loginRequirementModal').modal('show'); 
-                setTimeout(() => {
-                    window.location.href = "login.html"; 
-                }, 3000); 
-                return;
-            }
-
-            const name = document.getElementById("quoteName").value;
-            const destination = document.getElementById("quoteDestination").value;
-
-            // Save to localStorage
-            const quotes = JSON.parse(localStorage.getItem("quotes") || "[]");
-            quotes.push({
-                name,
-                email: document.getElementById("quoteEmail").value,
-                destination,
-                travelDates: document.getElementById("quoteDates").value,
-                travelers: document.getElementById("quoteTravelers").value,
-                additionalInfo: document.getElementById("quoteInfo").value,
-                submittedAt: new Date().toLocaleString()
-            });
-            localStorage.setItem("quotes", JSON.stringify(quotes));
-
-            $('#quoteConfirmationModal').modal('show'); 
-            quoteForm.reset();
-        });
-
-        // Logout functionality with custom modal
-        document.getElementById('logout').addEventListener('click', function(event) {
-            event.preventDefault(); 
-            $('#logoutModal').modal('show'); 
-        });
-
-        document.getElementById('confirmLogout').addEventListener('click', function() {
-            localStorage.removeItem('isLoggedIn'); 
-            $('#logoutModal').modal('hide'); 
-            window.location.href = 'login.html'; 
         });
     </script>
 
