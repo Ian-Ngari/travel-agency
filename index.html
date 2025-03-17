@@ -28,27 +28,41 @@
             color: white !important;
             transition: color 0.3s;
             font-family: 'Oswald', sans-serif;
-            margin: 0 10px; /* Consistent spacing between nav items */
+            margin: 0 10px;
         }
         .nav-link:hover {
             color: #ffdd57 !important;
         }
         .logout-btn {
-            background-color: #dc3545; /* Red color for logout button */
+            background-color: #dc3545;
             color: white;
             border: 2px solid transparent;
             transition: background-color 0.3s, border-color 0.3s;
             font-family: 'Oswald', sans-serif;
-            margin-left: 10px; /* Spacing between Get a Quote and Logout */
+            margin-left: 10px;
         }
         .logout-btn:hover {
-            background-color: #c82333; /* Darker red on hover */
+            background-color: #c82333;
             border-color: white;
         }
         .header-image {
             position: relative;
             height: 100vh;
             background: url('town.jpg') no-repeat center center/cover;
+        }
+        .header-image .btn-custom {
+            position: relative;
+            z-index: 10;
+            margin-top: 20px;
+            background-color: rgba(0, 123, 255, 1);
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .header-image .btn-custom:hover {
+            background-color: rgba(255, 204, 0, 0.9);
         }
         .overlay {
             background-color: rgba(0, 0, 0, 0.5);
@@ -200,32 +214,17 @@
             color: white;
             text-decoration: none;
         }
-        /* Custom Modal Styling */
-        .custom-modal .modal-content {
-            background-color: rgba(0, 123, 255, 0.9);
-            color: white;
-            border-radius: 10px;
+        .faq {
+            padding-bottom: 60px;
         }
-        .custom-modal .modal-header {
-            border-bottom: none;
-        }
-        .custom-modal .modal-footer {
-            border-top: none;
-        }
-        .custom-modal .btn-primary {
-            background-color: #ffdd57;
-            border-color: #ffdd57;
-            color: #333;
-        }
-        .custom-modal .btn-primary:hover {
-            background-color: #ffcc00;
-            border-color: #ffcc00;
+        .footer {
+            margin-top: 60px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Custom Modal for Alerts -->
+    
     <div class="modal fade custom-modal" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -291,6 +290,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="quote.html">Get a Quote</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="my-bookings.html">My Bookings</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link logout-btn" href="#" id="logout">Logout</a>
@@ -362,7 +364,7 @@
 
     <section class="faq">
         <div class="container">
-            <h2>FAQs</h2>
+            <h2>Frequently Asked Questions</h2>
             <div class="accordion" id="faqAccordion">
                 <div class="card">
                     <div class="card-header" id="headingOne">
@@ -410,25 +412,26 @@
             <p>&copy; 2024 Lux Travel Agency. All rights reserved.</p>
         </div>
     </footer>
+
     <script>
         // Logout functionality with custom modal
         document.getElementById('logout').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default link behavior
-            $('#logoutModal').modal('show'); // Show the logout confirmation modal
+            event.preventDefault(); 
+            $('#logoutModal').modal('show'); 
         });
 
         document.getElementById('confirmLogout').addEventListener('click', function() {
-            localStorage.removeItem('isLoggedIn'); // Clear login status
-            $('#logoutModal').modal('hide'); // Hide the modal
-            window.location.href = 'login.html'; // Redirect to login page
+            localStorage.removeItem('isLoggedIn'); 
+            $('#logoutModal').modal('hide'); 
+            window.location.href = 'login.html'; 
         });
 
         // Check if the user is logged in (optional, for pages that require login)
         const isLoggedIn = localStorage.getItem('isLoggedIn');
         if (!isLoggedIn && window.location.pathname !== '/login.html') {
-            $('#loginRedirectModal').modal('show'); // Show the login redirect modal
+            $('#loginRedirectModal').modal('show'); 
             $('#loginRedirectModal').on('hidden.bs.modal', function () {
-                window.location.href = 'login.html'; // Redirect to login page after modal is closed
+                window.location.href = 'login.html'; 
             });
         }
     </script>

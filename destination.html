@@ -26,21 +26,21 @@
             color: white !important;
             transition: color 0.3s;
             font-family: 'Oswald', sans-serif;
-            margin: 0 10px; /* Consistent spacing between nav items */
+            margin: 0 10px; 
         }
         .nav-link:hover {
             color: #ffdd57 !important;
         }
         .logout-btn {
-            background-color: #dc3545; /* Red color for logout button */
+            background-color: #dc3545; 
             color: white;
             border: 2px solid transparent;
             transition: background-color 0.3s, border-color 0.3s;
             font-family: 'Oswald', sans-serif;
-            margin-left: 10px; /* Spacing between Get a Quote and Logout */
+            margin-left: 10px; 
         }
         .logout-btn:hover {
-            background-color: #c82333; /* Darker red on hover */
+            background-color: #c82333; 
             border-color: white;
         }
         .btn-custom {
@@ -169,20 +169,20 @@
         .trip-filters label {
             font-weight: bold;
             margin-right: 10px;
-            color: white; /* Changed to white */
+            color: white; 
         }
 
         .trip-filters select {
             padding: 5px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.9); /* Add background for better visibility */
-            color: #333; /* Text color for dropdown */
+            background-color: rgba(255, 255, 255, 0.9); 
+            color: #333; 
         }
 
         .trip-filters button {
             margin-left: 10px;
-            background-color: rgba(0, 123, 255, 0.9); /* Match the button style */
+            background-color: rgba(0, 123, 255, 0.9); 
             color: white;
             border: none;
             padding: 5px 10px;
@@ -194,7 +194,7 @@
             background-color: #007bff;
         }
 
-        /* Weather Widget Styles */
+        
         .weather-widget {
             margin-top: 20px;
             padding: 10px;
@@ -217,7 +217,6 @@
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <a class="navbar-brand" href="#">
             <img src="log.png" alt="Travel Agency Logo" height="50">
@@ -246,23 +245,27 @@
                     <a class="nav-link" href="quote.html">Get a Quote</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="my-bookings.html">My Bookings</a>
+                </li>
+               
+                <li class="nav-item">
                     <a class="nav-link logout-btn" href="#" id="logout">Logout</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <!-- Destinations Section -->
+    
     <section class="destinations">
         <div class="container">
             <h2>Explore Our Destinations</h2>
 
-            <!-- Search Bar -->
+            
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Search destinations...">
             </div>
 
-            <!-- Trip Filters -->
+            
             <div class="trip-filters">
                 <label for="priceFilter">Filter by Price:</label>
                 <select id="priceFilter">
@@ -275,9 +278,9 @@
                 <button class="btn btn-custom" id="applyFilters">Apply Filter</button>
             </div>
 
-            <!-- Destination Items -->
+            
             <div class="destination-items">
-                <!-- Destination 1 -->
+                
                 <div class="destination-item">
                     <div class="row align-items-center">
                         <div class="col-md-6">
@@ -296,7 +299,7 @@
                     </div>
                 </div>
 
-                <!-- Destination 2 -->
+                
                 <div class="destination-item">
                     <div class="row align-items-center">
                         <div class="col-md-6 order-md-2">
@@ -315,7 +318,7 @@
                     </div>
                 </div>
 
-                <!-- Destination 3 -->
+               
                 <div class="destination-item">
                     <div class="row align-items-center">
                         <div class="col-md-6">
@@ -334,7 +337,7 @@
                     </div>
                 </div>
 
-                <!-- Destination 4 -->
+                
                 <div class="destination-item">
                     <div class="row align-items-center">
                         <div class="col-md-6 order-md-2">
@@ -353,7 +356,7 @@
                     </div>
                 </div>
 
-                <!-- Destination 5 -->
+                
                 <div class="destination-item">
                     <div class="row align-items-center">
                         <div class="col-md-6">
@@ -372,7 +375,7 @@
                     </div>
                 </div>
 
-                <!-- Destination 6 -->
+                
                 <div class="destination-item">
                     <div class="row align-items-center">
                         <div class="col-md-6 order-md-2">
@@ -391,7 +394,7 @@
                     </div>
                 </div>
 
-                <!-- Destination 7 -->
+                
                 <div class="destination-item">
                     <div class="row align-items-center">
                         <div class="col-md-6">
@@ -410,7 +413,7 @@
                     </div>
                 </div>
 
-                <!-- Destination 8 -->
+                
                 <div class="destination-item">
                     <div class="row align-items-center">
                         <div class="col-md-6 order-md-2">
@@ -429,7 +432,7 @@
                     </div>
                 </div>
 
-                <!-- Destination 9 -->
+                
                 <div class="destination-item">
                     <div class="row align-items-center">
                         <div class="col-md-6">
@@ -448,7 +451,7 @@
                     </div>
                 </div>
 
-                <!-- Destination 10 -->
+                
                 <div class="destination-item">
                     <div class="row align-items-center">
                         <div class="col-md-6 order-md-2">
@@ -470,7 +473,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    
     <footer class="footer">
         <div class="container">
             <h4>Lux Travel Agency</h4>
@@ -486,7 +489,7 @@
         </div>
     </footer>
 
-    <!-- Custom Modal for Logout Confirmation -->
+    
     <div class="modal fade custom-modal" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -507,7 +510,7 @@
         </div>
     </div>
 
-    <!-- Login Alert Modal -->
+    
     <div class="modal fade" id="loginAlertModal" tabindex="-1" aria-labelledby="loginAlertModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -530,7 +533,7 @@
     </div>
 
     <script>
-        // Check if user is logged in
+        
         const isLoggedIn = localStorage.getItem('isLoggedIn');
 
         // Add event listeners to all "Travel with Us" buttons
@@ -538,22 +541,22 @@
         travelButtons.forEach(button => {
             button.addEventListener('click', function(event) {
                 if (!isLoggedIn) {
-                    event.preventDefault(); // Prevent default link behavior
-                    $('#loginAlertModal').modal('show'); // Show the login alert modal
+                    event.preventDefault(); 
+                    $('#loginAlertModal').modal('show'); 
                 }
             });
         });
 
         // Logout functionality with custom modal
         document.getElementById('logout').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default link behavior
-            $('#logoutModal').modal('show'); // Show the logout confirmation modal
+            event.preventDefault(); 
+            $('#logoutModal').modal('show'); 
         });
 
         document.getElementById('confirmLogout').addEventListener('click', function() {
-            localStorage.removeItem('isLoggedIn'); // Clear login status
-            $('#logoutModal').modal('hide'); // Hide the modal
-            window.location.href = 'login.html'; // Redirect to login page
+            localStorage.removeItem('isLoggedIn'); 
+            $('#logoutModal').modal('hide'); 
+            window.location.href = 'login.html'; 
         });
 
         // Search Functionality
@@ -578,7 +581,7 @@
 
             destinationItems.forEach(item => {
                 const priceText = item.querySelector(".price").textContent;
-                const price = parseFloat(priceText.replace("From $", "").replace(",", "")); // Handle commas in prices
+                const price = parseFloat(priceText.replace("From $", "").replace(",", ""));
 
                 let priceMatch = false;
 
@@ -603,7 +606,7 @@
         });
 
         // Weather API Integration
-        const apiKey = "5023cfb62c08ba9a3eb54d5afa9a532b"; // Replace with your OpenWeatherMap API key
+        const apiKey = "5023cfb62c08ba9a3eb54d5afa9a532b"; 
 
         const fetchWeather = async (city, elementId) => {
             try {
@@ -639,6 +642,12 @@
         fetchWeather("Cairo", "weatherEgypt");
         fetchWeather("Paris", "weatherParis");
         fetchWeather("Livingstone", "weatherVictoriaFalls");
+
+        function saveVisit(destination, date) {
+    const visits = JSON.parse(localStorage.getItem("visits")) || [];
+    visits.push({ destination, date });
+    localStorage.setItem("visits", JSON.stringify(visits));
+}
     </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

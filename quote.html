@@ -26,21 +26,21 @@
             color: white !important;
             transition: color 0.3s;
             font-family: 'Oswald', sans-serif;
-            margin: 0 10px; /* Consistent spacing between nav items */
+            margin: 0 10px;
         }
         .nav-link:hover {
             color: #ffdd57 !important;
         }
         .logout-btn {
-            background-color: #dc3545; /* Red color for logout button */
+            background-color: #dc3545;
             color: white;
             border: 2px solid transparent;
             transition: background-color 0.3s, border-color 0.3s;
             font-family: 'Oswald', sans-serif;
-            margin-left: 10px; /* Spacing between Get a Quote and Logout */
+            margin-left: 10px;
         }
         .logout-btn:hover {
-            background-color: #c82333; /* Darker red on hover */
+            background-color: #c82333;
             border-color: white;
         }
         .btn-custom {
@@ -156,28 +156,23 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
         .quote-calculator h4 {
             margin-bottom: 20px;
             color: rgba(0, 123, 255, 0.9);
         }
-
         .quote-calculator label {
             font-weight: bold;
         }
-
         .quote-calculator input,
         .quote-calculator select {
             margin-bottom: 15px;
         }
-
         .quote-calculator .result {
             margin-top: 20px;
             font-size: 1.2rem;
             font-weight: bold;
             color: rgba(0, 123, 255, 0.9);
         }
-
         .currency-converter {
             margin-top: 20px;
             padding: 20px;
@@ -185,34 +180,52 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
         .currency-converter h4 {
             margin-bottom: 20px;
             color: rgba(0, 123, 255, 0.9);
         }
-
         .currency-converter label {
             font-weight: bold;
         }
-
         .currency-converter input,
         .currency-converter select {
             margin-bottom: 15px;
         }
-
         .currency-converter .result {
             margin-top: 20px;
             font-size: 1.2rem;
             font-weight: bold;
             color: rgba(0, 123, 255, 0.9);
         }
+        /* Custom Modal Styles */
+        .custom-modal .modal-content {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .custom-modal .modal-header {
+            background-color: rgba(0, 123, 255, 0.9);
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .custom-modal .modal-title {
+            font-family: 'Oswald', sans-serif;
+        }
+        .custom-modal .modal-body {
+            font-family: 'Roboto', sans-serif;
+            color: #666;
+        }
+        .custom-modal .modal-footer {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
+    
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <a class="navbar-brand" href="#">
-            <img src="log.png" alt="Lux Travel Agency Logo" height="50">
+            <img src="log.png" alt="Travel Agency Logo" height="50">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -238,13 +251,16 @@
                     <a class="nav-link" href="quote.html">Get a Quote</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="my-bookings.html">My Bookings</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link logout-btn" href="#" id="logout">Logout</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <!-- Quote Section -->
+    
     <section class="quote">
         <div class="container">
             <h2>Get a Quote</h2>
@@ -330,7 +346,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    
     <footer class="footer">
         <div class="container">
             <h4>Lux Travel Agency</h4>
@@ -346,7 +362,68 @@
         </div>
     </footer>
 
-    <!-- Custom Modal for Logout Confirmation -->
+    
+    <!-- Quote Submission Confirmation Modal -->
+    <div class="modal fade custom-modal" id="quoteConfirmationModal" tabindex="-1" aria-labelledby="quoteConfirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="quoteConfirmationModalLabel">Quote Submitted</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Thank you! Your quote request has been submitted successfully. We will contact you shortly.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Requirement Modal -->
+    <div class="modal fade custom-modal" id="loginRequirementModal" tabindex="-1" aria-labelledby="loginRequirementModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginRequirementModalLabel">Login Required</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    You must be logged in to submit a request. Redirecting to the login page...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Currency Conversion Error Modal -->
+    <div class="modal fade custom-modal" id="currencyErrorModal" tabindex="-1" aria-labelledby="currencyErrorModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="currencyErrorModalLabel">Conversion Error</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Failed to convert currency. Please try again later.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-custom" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
     <div class="modal fade custom-modal" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -367,6 +444,7 @@
         </div>
     </div>
 
+    
     <script>
         // Quote Calculator
         document.getElementById("calculateQuote").addEventListener("click", function() {
@@ -401,31 +479,53 @@
                 document.getElementById("conversionResult").textContent = `Converted Amount: ${convertedAmount} ${currency}`;
             } catch (error) {
                 console.error("Error fetching exchange rates:", error);
-                alert("Failed to convert currency. Please try again later.");
+                $('#currencyErrorModal').modal('show'); 
             }
+        });
+
+        // Quote Form Submission
+        document.getElementById("quoteForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+            if (!isLoggedIn) {
+                $('#loginRequirementModal').modal('show'); 
+                setTimeout(() => {
+                    window.location.href = "login.html"; 
+                }, 3000); 
+                return;
+            }
+
+            const name = document.getElementById("quoteName").value;
+            const destination = document.getElementById("quoteDestination").value;
+
+            // Save to localStorage
+            const quotes = JSON.parse(localStorage.getItem("quotes") || "[]");
+            quotes.push({
+                name,
+                email: document.getElementById("quoteEmail").value,
+                destination,
+                travelDates: document.getElementById("quoteDates").value,
+                travelers: document.getElementById("quoteTravelers").value,
+                additionalInfo: document.getElementById("quoteInfo").value,
+                submittedAt: new Date().toLocaleString()
+            });
+            localStorage.setItem("quotes", JSON.stringify(quotes));
+
+            $('#quoteConfirmationModal').modal('show'); 
+            quoteForm.reset();
         });
 
         // Logout functionality with custom modal
         document.getElementById('logout').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default link behavior
-            $('#logoutModal').modal('show'); // Show the logout confirmation modal
+            event.preventDefault(); 
+            $('#logoutModal').modal('show'); 
         });
 
         document.getElementById('confirmLogout').addEventListener('click', function() {
-            localStorage.removeItem('isLoggedIn'); // Clear login status
-            $('#logoutModal').modal('hide'); // Hide the modal
-            window.location.href = 'login.html'; // Redirect to login page
-        });
-
-        // Submit Request Login Check
-        document.getElementById("quoteForm").addEventListener("submit", function(event) {
-            const isLoggedIn = localStorage.getItem('isLoggedIn');
-
-            if (!isLoggedIn) {
-                event.preventDefault(); // Prevent form submission
-                alert("You must be logged in to submit a request. Redirecting to login page...");
-                window.location.href = "login.html"; // Redirect to login page
-            }
+            localStorage.removeItem('isLoggedIn'); 
+            $('#logoutModal').modal('hide'); 
+            window.location.href = 'login.html'; 
         });
     </script>
 

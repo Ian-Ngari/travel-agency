@@ -265,7 +265,6 @@
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <a class="navbar-brand" href="#">
             <img src="log.png" alt="Travel Agency Logo" height="50">
@@ -275,18 +274,36 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="destination.html">Destinations</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Packages</a></li>
-                <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="destination.html">Destinations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="packages.html">Packages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="blog.html">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="quote.html">Get a Quote</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="my-bookings.html">My Bookings</a>
+                </li>
+               
+                <li class="nav-item">
+                    <a class="nav-link logout-btn" href="#" id="logout">Logout</a>
+                </li>
             </ul>
-            <a class="btn btn-custom ml-3" href="quote.html">Get a Quote</a>
-            <a class="btn logout-btn ml-3" href="#" id="logout">Logout</a>
         </div>
     </nav>
 
-    <!-- Packages Section -->
+    
     <section class="packages">
         <div class="container">
             <div class="title-container">
@@ -350,14 +367,14 @@
         </div>
     </section>
 
-    <!-- Unavailable Prompt -->
+    
     <div class="unavailable-prompt" id="unavailablePrompt">
         <h3>Package Unavailable</h3>
         <p>This package is currently unavailable. Please check back later or explore other packages.</p>
         <button class="btn-close" onclick="closePrompt()">Close</button>
     </div>
 
-    <!-- Footer -->
+    
     <footer class="footer">
         <div class="container">
             <h4>Lux Travel Agency</h4>
@@ -381,7 +398,7 @@
             window.location.href = 'login.html';
         }
 
-        // Logout functionality
+        
         document.getElementById('logout').addEventListener('click', (e) => {
             e.preventDefault();
             localStorage.removeItem('isLoggedIn');
@@ -404,12 +421,12 @@
                         availabilityEl.textContent = 'Available';
                         availabilityEl.classList.add('available');
                         bookBtn.dataset.available = true;
-                        bookBtn.href = 'quote.html'; // Set valid link
+                        bookBtn.href = 'quote.html'; 
                     } else {
                         availabilityEl.textContent = 'Unavailable';
                         availabilityEl.classList.add('unavailable');
                         bookBtn.dataset.available = false;
-                        bookBtn.href = '#'; // Reset link
+                        bookBtn.href = '#'; 
                     }
                 }, 2000);
             });
@@ -446,7 +463,6 @@
         });
     </script>
 
-    <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
