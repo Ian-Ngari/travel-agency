@@ -46,6 +46,7 @@
         </div>
     </nav>
 
+
     <div class="container my-5">
         <h2 class="text-center mb-4" style="color: rgba(0, 123, 255, 0.9);">All Client Bookings</h2>
         <div id="allBookings"></div>
@@ -53,41 +54,44 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-    const isAdmin = localStorage.getItem("isAdmin") === "true";
-    if (!isAdmin) {
-        alert("You do not have permission to access this page.");
-        window.location.href = "login.html"; 
-    }
-});
-        
-        document.addEventListener("DOMContentLoaded", () => {
-            const allBookings = document.getElementById("allBookings");
-            const quotes = JSON.parse(localStorage.getItem("quotes") || "[]");
-
-            if (quotes.length === 0) {
-                allBookings.innerHTML = "<p style='text-align:center;'>No bookings available.</p>";
+            
+            const isAdmin = localStorage.getItem("isAdmin") === "true";
+            if (!isAdmin) {
+                alert("Unauthorized access!");
+                window.location.href = "login.html";
                 return;
             }
 
-            quotes.forEach((q, index) => {
+            
+            const allBookings = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key.startsWith("user_")) {
+                    const userBookings = JSON.parse(localStorage.getItem(key));
+                    allBookings.push(...userBookings);
+                }
+            }
+
+            const container = document.getElementById("allBookings");
+            if (allBookings.length === 0) {
+                container.innerHTML = "<p class='text-center'>No bookings found</p>";
+                return;
+            }
+
+            allBookings.forEach((booking, index) => {
                 const card = document.createElement("div");
-                card.className = "card";
+                card.className = "card mb-3";
                 card.innerHTML = `
-                    <h3>${q.destination}</h3>
-                    <p><strong>Name:</strong> ${q.name}</p>
-                    <p><strong>Email:</strong> ${q.email}</p>
-                    <p><strong>Travel Dates:</strong> ${q.travelDates}</p>
-                    <p><strong>Travelers:</strong> ${q.travelers}</p>
-                    <p><strong>Additional Info:</strong> ${q.additionalInfo}</p>
-                    <small><strong>Submitted At:</strong> ${q.submittedAt}</small>
+                    <h3>${booking.destination}</h3>
+                    <p><strong>User:</strong> ${booking.name}</p>
+                    <p><strong>Email:</strong> ${booking.email}</p>
+                    <p><strong>Dates:</strong> ${booking.travelDates}</p>
+                    <p><strong>Travelers:</strong> ${booking.travelers}</p>
+                    <small><strong>Submitted:</strong> ${booking.submittedAt}</small>
                 `;
-                allBookings.appendChild(card);
+                container.appendChild(card);
             });
         });
     </script>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

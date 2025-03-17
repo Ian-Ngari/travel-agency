@@ -454,35 +454,26 @@
                 return;
             }
 
-            const name = document.getElementById("quoteName").value;
-            const email = document.getElementById("quoteEmail").value;
-            const destination = document.getElementById("quoteDestination").value;
-            const travelDates = document.getElementById("quoteDates").value;
-            const travelers = document.getElementById("quoteTravelers").value;
-            const additionalInfo = document.getElementById("quoteInfo").value;
-
-            // Create a booking object
+            // Create booking object
             const booking = {
-                name,
-                email,
-                destination,
-                travelDates,
-                travelers,
-                additionalInfo,
+                name: document.getElementById("quoteName").value,
+                email: document.getElementById("quoteEmail").value,
+                destination: document.getElementById("quoteDestination").value,
+                travelDates: document.getElementById("quoteDates").value,
+                travelers: document.getElementById("quoteTravelers").value,
+                additionalInfo: document.getElementById("quoteInfo").value,
                 submittedAt: new Date().toLocaleString()
             };
 
-            // Save booking under the user's key
+            // Save to user-specific key
             const userKey = `user_${currentUser}`;
             const userBookings = JSON.parse(localStorage.getItem(userKey) || "[]");
             userBookings.push(booking);
             localStorage.setItem(userKey, JSON.stringify(userBookings));
 
-            // Show confirmation modal
-            $('#quoteConfirmationModal').modal('show'); 
-            document.getElementById("quoteForm").reset();
+            $('#quoteConfirmationModal').modal('show');
+            this.reset();
         });
-
         // Logout functionality with custom modal
         document.getElementById('logout').addEventListener('click', function(event) {
             event.preventDefault(); 
